@@ -11,8 +11,8 @@ import AdminPage from './Components/page/adminpage'
 
 function App() {
   return (
-    <div className="w-full h-full">
-      <div className="w-full h-full">
+    <div style={{width:"100%",height:"100vh"}}>
+      <div style={{width:"100%",height:"100%"}}>
         <Router>
           <Routes>
             <Route path='/' element={<SignInSignUpPage />} />

@@ -199,9 +199,10 @@ const UniversityPage = () => {
   // }else if(user == true){
 
   // if(universityUser){
+    
   return (
     <div className="university__wrapper">
-     <Navbar />
+     <Navbar showMetaMaskBtn={false} />
       <div className="university__description">
         <div className="university__3d__model__container">
           <img src={img1} alt="3Dlogo" />

@@ -2,22 +2,29 @@ import React from "react";
 import "./page.css";
 import img3 from "./images/img3.png";
 import StudentForm from "../AircAdmin";
+import "./universitypage.css"
+import img1 from "./images/img1.jpg";
+import Navbar from "../Navbar";
+
 
 const AdminPage = () => {
   return (
-    <div className="body">
-      <div className="description ">
-        <div className="description-image">
-          <img src={img3} alt="Image 1" />
+    <div className="university__wrapper">
+     <Navbar showMetaMaskBtn={false} />
+      <div className="university__description">
+        <div className="university__3d__model__container">
+          <img src={img1} alt="3Dlogo" />
         </div>
-        <div className="description-content">
+        <div className="university__features__container">
+          <div className="university__features__inner__container">
+          <div className="university__features__heading">
           <h2>Comprehensive Student Database!</h2>
           <p>
             Manage student information effortlessly. Maintain an up-to-date
             database to ensure accurate verification
           </p>
-          <div className="feature-box white-glassmorphism p-3 m-2">
-            <div className="flex flex-row items-center cursor-pointer">
+          </div>
+              <div className="university__feature">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -33,13 +40,11 @@ const AdminPage = () => {
                 />
               </svg>
               <span className="ml-2">
-                Streamlined student info management with user-friendly
+              Streamlined student info management with user-friendly
                 interface.
               </span>
-            </div>
-          </div>
-          <div className="white-glassmorphism p-3 m-2">
-            <div className="flex flex-row items-center cursor-pointer">
+              </div>
+              <div className="university__feature">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -55,13 +60,11 @@ const AdminPage = () => {
                 />
               </svg>
               <span className="ml-2">
-                Real-time data synchronization for accurate and efficient
+              Real-time data synchronization for accurate and efficient
                 record-keeping.
               </span>
-            </div>
-          </div>
-          <div className="white-glassmorphism p-3 m-2">
-            <div className="flex flex-row items-center cursor-pointer">
+              </div>
+              <div className="university__feature">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -77,16 +80,17 @@ const AdminPage = () => {
                 />
               </svg>
               <span className="ml-2">
-                Customizable user access levels ensure data security and
+              Customizable user access levels ensure data security and
                 privacy.
               </span>
-            </div>
+              </div>
           </div>
-          {/* Add more feature boxes */}
         </div>
       </div>
-      {/* <FileUpload /> Include the updated FileUpload component here */}
+      {/* <div className="university__sign__container"> */}
+      
       <StudentForm />
+      {/* </div> */}
     </div>
   );
 };
