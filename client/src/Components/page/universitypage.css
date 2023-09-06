@@ -150,11 +150,12 @@ svg,span{
 
 .transaction__info__container{
     width: 580px;
-    height: 350px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-color: #131111;
     margin-left: 20px;
+    border-radius: 10px;
 }

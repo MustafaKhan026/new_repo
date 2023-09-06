@@ -6,7 +6,9 @@ import { abi, contractAddress } from "../utils/constants";
 import axios from "axios";
 import "./SignMessage1.css";
 
-const URID = process.env.REACT_APP_NGROK_BACKEND_URI;
+// const URID = process.env.REACT_APP_NGROK_BACKEND_URI;
+const URID = "http://localhost:5000"
+
 
 const fetchBlockchain = async (
   cert_hash,
@@ -212,7 +214,7 @@ export default function VerifyFileSignature() {
     >
       <div
         className="credit-card w-full shadow-lg mx-auto rounded-xl bg-white overflow-hidden"
-        style={{ width: "600px", height: "350px" }}
+        style={{ width: "600px", height: "400px" }}
       >
         <main className="mt-4 p-4">
           <h1 className="text-xl font-semibold text-gray-700 text-center form-heading">
@@ -247,6 +249,13 @@ export default function VerifyFileSignature() {
             className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
           >
             Verify Signature
+          </button>
+          <button
+            // type="submit"
+            className="btn btn-primary submit-button focus:ring focus:outline-none w-full mt-2"
+            onClick={downloadCert}
+          >
+            Download Certificate
           </button>
           <div className="p-1 mt-1">
             <ErrorMessage message={error} />

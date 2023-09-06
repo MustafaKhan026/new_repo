@@ -55,7 +55,9 @@ export default function StudentForm() {
     console.log(studentDetails)
 
     try {
-      const URID = process.env.REACT_APP_NGROK_BACKEND_URI
+      // const URID = process.env.REACT_APP_NGROK_BACKEND_URI
+      const URID = "http://localhost:5000"
+
       const config = {
         headers: {
           "ngrok-skip-browser-warning": true
