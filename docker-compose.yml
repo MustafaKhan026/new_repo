@@ -1,0 +1,77 @@
+version: '3.7'
+
+services:
+  txv_blockchain:
+    build:
+      context: ./blockchain
+      dockerfile: Dockerfile
+    image: txv_blockchain
+    container_name: txv-blockchain
+    command: npx hardhat node
+    volumes:
+      - ./blockchain/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "8545:8545"
+    stdin_open: true
+    tty: true
+    restart: always
+    env_file: ./blockchain/.env
+    networks:
+      - airc_txv
+  txv_backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: txv_backend
+    container_name: txv-backend
+    command: npm start
+    volumes:
+      - ./backend/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "5000:5000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - mongo
+    env_file: ./backend/.env
+    networks:
+      - airc_txv
+  mongo:
+    image: mongo
+    container_name: mongo-db
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - airc_txv
+  txv_client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: txv_client
+    container_name: txv-client
+    command: npm start
+    volumes:
+      - ./client/:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - txv_backend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    networks:
+      - airc_txv
+
+networks:
+    airc_txv:
+        driver: bridge
+
+volumes:
+    data-volume:
+    node_modules:
+    web-root:
+      driver: local

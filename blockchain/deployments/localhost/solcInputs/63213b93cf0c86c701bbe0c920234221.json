@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/TranscriptRegistry.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract TranscriptRegistry {\r\n    struct Transcript {\r\n        string cert_name;\r\n        string cert_hash;\r\n        string digitalSignature;\r\n        string signerAddress;\r\n    }\r\n    \r\n    mapping(string => Transcript) public transcripts;\r\n\r\n    function addTranscript(string[] memory transcriptData) public {\r\n        require(transcriptData.length == 4, \"Invalid data length\");\r\n        \r\n        string memory cert_name = transcriptData[0];\r\n        string memory cert_hash = transcriptData[1];\r\n        string memory digitalSignature = transcriptData[2];\r\n        string memory signerAddress = transcriptData[3]; // Convert string address to address type\r\n        \r\n        transcripts[cert_hash] = Transcript(cert_name, cert_hash, digitalSignature, signerAddress);\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
