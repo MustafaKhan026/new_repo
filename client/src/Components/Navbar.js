@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import "./Navbar.css"
 
-const Navbar = ({metamaskConnected,btnhandler}) => {
-    const [scrolled,setScrolled] = useState(false)
+const Navbar = ({metamaskConnected,showMetaMaskBtn}) => {
+  const [metaMaskConn,setMetaMaskConn] = useState(false)
 
-    const handleScroll=() => {
-        const offset=window.scrollY;
-        if(offset > 200 ){
-          setScrolled(true);
+      const btnhandler = async () => {
+        try {
+          // Check if MetaMask is present
+          if (window.ethereum) {
+            // Request account access
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            setMetaMaskConn(true);
+            alert("MetaMask Connected");
+          } else {
+            alert("Install MetaMask extension!!");
+          }
+        } catch (error) {
+          alert("Error connecting to MetaMask: " + error.message);
         }
-        else{
-          setScrolled(false);
-        }
-      }
-      useEffect(() => {
-        window.addEventListener('scroll',handleScroll)
-      })
+      };
 
   return (
     <div className="navbar__container">
       <div className='logout__container'>
-        { metamaskConnected? null :<button className='metamask__btn' onClick={btnhandler}>Conect Metamask</button>}
+        { metaMaskConn ? null :<button className='metamask__btn' onClick={btnhandler}>Conect Metamask</button>}
         <button className='logout__btn'>Log Out</button>
       </div>
     </div>

@@ -5,7 +5,6 @@ import SuccessMessage from "./SuccessMessage";
 import { abi, contractAddress } from "../utils/constants";
 import axios from "axios";
 import "./SignMessage1.css";
-const Web3 = require("web3");
 
 const URID = process.env.REACT_APP_NGROK_BACKEND_URI;
 
