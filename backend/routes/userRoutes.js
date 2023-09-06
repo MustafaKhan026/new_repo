@@ -7,7 +7,6 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");  
 const crypto = require("crypto");
-const cookie = require('cookie');
 
 process.env.NODE_ENV = "development";
 // POST /api/signup
@@ -48,7 +47,6 @@ router.post("/signup", async (req, res) => {
 
     res
     .status(201)
-    .cookie("user","hello there")
       .json({ message: "An Email sent to your account please verify" });
   } catch (error) {
     console.log(error)
@@ -74,14 +72,18 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ userId: user._id }, "secretKey", {
       expiresIn: "1h", // Token expiration time (optional)
     });
-
-    // Return the user ID along with the token in the response
-    return res.status(200).json({
+    
+    res.status(200).cookie("token",token,{
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+  })
+    .send({
       message: "Login success",
       token,
       userId: user._id,
       userType:user.userType
-    });
+    })
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

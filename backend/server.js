@@ -14,8 +14,8 @@ const cookieParser = require("cookie-parser");
 // middleware
 app.use(cors())
 app.use(express.json())
-app.options('*', cors()); 
 app.use(cookieParser());
+// app.options('*', cors()); 
 
 
 app.get('/genCert/:cert_hash', async (req, res) => {

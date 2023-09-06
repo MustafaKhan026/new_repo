@@ -34,7 +34,7 @@
 }
 .university__sign__container{
     width: 100%;
-    height: 590px;
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,4 +147,20 @@
 svg,span{
     cursor: pointer;
     color: #fff;
+}
+
+
+.transaction__info__container{
+    width: 580px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #131111;
+    margin-left: 20px;
+}
+
+.transaction__info__container p{
+    text-align: left;
 }
