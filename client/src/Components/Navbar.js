@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Navbar.css"
 
-const Navbar = ({metamaskConnected,showMetaMaskBtn}) => {
+const Navbar = ({metamaskConnected,showMetaMaskBtn,showMetaMaskBtnConn}) => {
   const [metaMaskConn,setMetaMaskConn] = useState(false)
 
       const btnhandler = async () => {
@@ -11,6 +11,7 @@ const Navbar = ({metamaskConnected,showMetaMaskBtn}) => {
             // Request account access
             await window.ethereum.request({ method: 'eth_requestAccounts' });
             setMetaMaskConn(true);
+            showMetaMaskBtnConn(true)
             alert("MetaMask Connected");
           } else {
             alert("Install MetaMask extension!!");

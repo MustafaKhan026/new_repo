@@ -108,24 +108,10 @@ import img1 from "./images/img1.jpg";
 
 const ClientPage = () => {
   const [metaMaskConn,setMetaMaskConn] = useState(false)
-  const btnhandler = async () => {
-    try {
-      // Check if MetaMask is present
-      if (window.ethereum) {
-        // Request account access
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setMetaMaskConn(true);
-        alert("MetaMask Connected");
-      } else {
-        alert("Install MetaMask extension!!");
-      }
-    } catch (error) {
-      alert("Error connecting to MetaMask: " + error.message);
-    }
-  };
+  
   return (
     <div className="university__wrapper">
-     <Navbar metamaskConnected={metaMaskConn} btnhandler={btnhandler}/>
+     <Navbar metamaskConnected={metaMaskConn} showMetaMaskBtnConn={setMetaMaskConn}/>
       <div className="university__description">
         <div className="university__3d__model__container">
           <img src={img1} alt="3Dlogo" />
